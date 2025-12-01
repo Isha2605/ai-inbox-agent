@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Inbox Agent</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="app-shell">
+    <!-- HEADER -->
+    <header class="topbar glass-header">
+      <div class="topbar-left">
+        <div class="product-name">AI Inbox Agent</div>
+        <div class="product-tagline">Smart message analysis</div>
+      </div>
+    </header>
+
+    <!-- MAIN LAYOUT -->
+    <main class="main-layout">
+      <!-- LEFT: INPUT PANEL -->
+      <section class="panel panel-input glass">
+        <h2>Paste a message</h2>
+        <p class="subtext">
+          Paste content from email, Slack, or LinkedIn and let the agent do the heavy lifting.
+        </p>
+
+        <div class="input-wrapper">
+          <textarea id="userMessage" placeholder="Paste your message here..."></textarea>
+        </div>
+
+        <button id="analyzeBtn" class="primary-btn">
+          Analyze message
+        </button>
+
+        <p class="hint-text">
+          The agent will classify the message, extract tasks, and suggest a reply.
+        </p>
+
+        <!-- HISTORY -->
+        <section class="history-block">
+          <div class="history-header">
+            <span>History</span>
+            <button id="clearHistory" class="history-clear-btn">Clear</button>
+          </div>
+          <div id="historyList" class="history-list"></div>
+        </section>
+      </section>
+
+      <!-- RIGHT: RESULTS PANEL -->
+      <section class="panel panel-results glass">
+        <!-- LOADING STATE (HIDDEN BY DEFAULT) -->
+        <div id="loading" class="loading hidden">
+          <div class="spinner-orb"></div>
+          <p>Processing your message...</p>
+        </div>
+
+        <!-- RESULTS (HIDDEN UNTIL FIRST ANALYZE) -->
+        <div id="results" class="results hidden">
+          <!-- CATEGORY -->
+          <article class="card fade-slide card-small">
+            <div class="card-header">
+              <span class="card-label">Category</span>
+              <div id="classificationBadge" class="badge badge-info">INFO</div>
+            </div>
+          </article>
+
+          <!-- SUMMARY -->
+          <article class="card fade-slide">
+            <div class="card-header">
+              <span class="card-label">Summary</span>
+            </div>
+            <p id="summaryText" class="reply-text"></p>
+          </article>
+
+          <!-- TASKS -->
+          <article class="card fade-slide">
+            <div class="card-header">
+              <span class="card-label">Tasks</span>
+            </div>
+            <ul id="tasksList" class="tasks-list"></ul>
+          </article>
+
+          <!-- REPLY -->
+          <article class="card fade-slide">
+            <div class="card-header">
+              <span class="card-label">Suggested reply</span>
+              <div class="rewrite-controls">
+                <button id="rewriteFriendly" class="chip-btn">Friendly</button>
+                <button id="rewriteFormal" class="chip-btn">Formal</button>
+                <button id="rewriteShort" class="chip-btn">Short</button>
+              </div>
+            </div>
+
+            <div id="rewriteStatus" class="rewrite-status hidden">
+              Rewriting reply...
+            </div>
+
+            <p id="replyText" class="reply-text"></p>
+
+            <button id="copyReply" class="secondary-btn">Copy reply</button>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
