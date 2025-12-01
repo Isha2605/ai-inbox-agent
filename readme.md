@@ -5,9 +5,10 @@ This repository includes the demo, UI preview, and presentation slides.
 
 ---
 
-## 🎥 Demo (GIF Placeholder)
+## 🎥 Demo
 
-Replace the line below with your actual GIF:
+
+![Demo GIF](./demo.gif)
 
 ## Project Slides  
 
